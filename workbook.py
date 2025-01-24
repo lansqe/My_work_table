@@ -205,6 +205,4 @@ for index, order in enumerate(orders, start=1):
         print(f"{key}: {value}")
     print()
 
-    # Синтаксис
-    # ООП
-    # Базовые алгоритмы и шаблоны проектирования структурные паттерны
+
