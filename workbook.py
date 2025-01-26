@@ -193,16 +193,62 @@
 # print(result)
 
 
-orders = [
-    {"номер": "001", "клиент": "John", "дата": "2022-01-01", "статус": "в обработке"},
-    {"номер": "002", "клиент": "Alice", "дата": "2022-01-02", "статус": "выполнен"},
-    {"номер": "003", "клиент": "Bob", "дата": "2022-01-03", "статус": "выполнен"},
-    {"номер": "004", "клиент": "Eva", "дата": "2022-01-04", "статус": "в обработке"},
-]
-for index, order in enumerate(orders, start=1):
-    print(f"Заказ {index}:")
-    for key, value in order.items():
-        print(f"{key}: {value}")
-    print()
-+
+# orders = [
+#     {"номер": "001", "клиент": "John", "дата": "2022-01-01", "статус": "в обработке"},
+#     {"номер": "002", "клиент": "Alice", "дата": "2022-01-02", "статус": "выполнен"},
+#     {"номер": "003", "клиент": "Bob", "дата": "2022-01-03", "статус": "выполнен"},
+#     {"номер": "004", "клиент": "Eva", "дата": "2022-01-04", "статус": "в обработке"},
+# ]
+# for index, order in enumerate(orders, start=1):
+#     print(f"Заказ {index}:")
+#     for key, value in order.items():
+#         print(f"{key}: {value}")
+#     print()
+#
+#
+# for index, name in enumerate(orders, 1):
+#     if name['статус'] == 'выполнен':
+#         print(index, name['клиент'])
 
+
+coffee = 1.0  # Запас молотого кофе в килограммах
+milk = 2.0  # Запас молока в литрах
+
+# Перевод в граммы и миллилитры
+coffee_on_gram = coffee * 1000  # переводим в граммы
+milk_on_gram = milk * 1000  # переводим в миллилитры
+
+num_drink = 0
+visitors = 0
+
+while True:
+    num_drink += 1
+
+    # Определение типа напитка
+    if num_drink % 3 == 0 and num_drink % 5 == 0:
+        name_drink = 'капучино'
+    elif num_drink % 5 == 0:
+        name_drink = 'латте'
+    else:
+        name_drink = 'американо'
+
+    # Проверяем наличие кофе (7 г на порцию)
+    if coffee_on_gram >= 7:
+        coffee_on_gram -= 7  # Уменьшаем запас кофе на порцию
+        visitors += 1  # Увеличиваем количество посетителей
+
+        # Обрабатываем заказ на напиток с молоком
+        if name_drink == 'латте':
+            if milk_on_gram >= 180:
+                milk_on_gram -= 180
+            else:
+                break  # Молоко закончилось, выходим из цикла
+        elif name_drink == 'капучино':
+            if milk_on_gram >= 100:
+                milk_on_gram -= 100
+            else:
+                break  # Молоко закончилось, выходим из цикла
+    else:
+        break  # Кофе закончился, выходим из цикла
+
+print(visitors)
