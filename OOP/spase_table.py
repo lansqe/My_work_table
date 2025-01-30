@@ -23,10 +23,22 @@ class Name():
 
 unit = Name('viKtoR', 'veZUvi')
 
-print(unit.first_name())
-print(unit.last_name())
-print(unit.full_name())
-print(unit.initial())
 
 
+class Calculator():
 
+    def __init__(self, first_number, second_numbers):
+        self.first_number = first_number
+        self.second_number = second_numbers
+
+    def add(self):
+        pass
+
+    def subtract(self):
+        pass
+
+    def multiply(self):
+        pass
+
+    def divide(self):
+        pass
