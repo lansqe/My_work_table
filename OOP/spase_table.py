@@ -27,18 +27,31 @@ unit = Name('viKtoR', 'veZUvi')
 
 class Calculator():
 
-    def __init__(self, first_number, second_numbers):
+    def __init__(self, first_number: float, second_numbers: float):
         self.first_number = first_number
         self.second_number = second_numbers
 
     def add(self):
-        pass
+        return self.first_number + self.second_number
 
     def subtract(self):
-        pass
+        return self.first_number - self.second_number
 
     def multiply(self):
-        pass
+        return self.first_number * self.second_number
 
     def divide(self):
-        pass
+        if self.second_number == 0:
+            raise ValueError('Деление на ноль невозможно')
+        return self.first_number / self.second_number
+
+
+var_one = Calculator(10, 0)
+print(var_one.add())
+print(var_one.subtract())
+print(var_one.multiply())
+try:
+    print(var_one.divide())
+except ValueError as e:
+    print(e)
+
