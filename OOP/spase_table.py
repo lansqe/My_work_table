@@ -91,5 +91,42 @@ class Book:
 b1 = Book('Crime and Punishment', 'Fedor Dostoevsky', 1866)
 b2 = Book.parse_book_info('Crime and Punishment-Fedor Dostoevsky-1866')
 
-print(b1.author)
-print(b2)
+
+# print(b1.author)
+# print(b2)
+
+
+class Pizza:
+    order_count = 0
+
+    def __init__(self, ingredients: list):
+        self.ingredients = ingredients
+        Pizza.order_count += 1
+        self.order_number = Pizza.order_count
+
+    @classmethod
+    def garden_feast(cls):
+        return cls(['spinach', 'olives', 'mushroom'])
+
+    @classmethod
+    def meat_festival(cls):
+        return cls(['beef', 'meatball', 'bacon'])
+
+    @classmethod
+    def hawaiian(cls):
+        return cls(['ham', 'pineapple'])
+
+
+p1 = Pizza(['bacon', 'parmesan', 'ham'])
+p2 = Pizza.garden_feast()
+
+print(p1.ingredients)
+print(p2.ingredients)
+
+print(p1.order_number)
+print(p2.order_number)
+
+
+
+
+
