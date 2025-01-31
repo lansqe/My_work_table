@@ -1,4 +1,4 @@
-class Name():
+class Name:
 
     def __init__(self, rough_first_name: str, rough_last_name: str):
         self.rough_first_name = rough_first_name
@@ -24,8 +24,7 @@ class Name():
 unit = Name('viKtoR', 'veZUvi')
 
 
-
-class Calculator():
+class Calculator:
 
     def __init__(self, first_number: float, second_numbers: float):
         self.first_number = first_number
@@ -46,13 +45,32 @@ class Calculator():
         return self.first_number / self.second_number
 
 
-var_one = Calculator(10, 0)
-print(var_one.add())
-print(var_one.subtract())
-print(var_one.multiply())
-try:
-    print(var_one.divide())
-except ValueError as e:
-    print(e)
+# var_one = Calculator(10, 0)
+# print(var_one.add())
+# print(var_one.subtract())
+# print(var_one.multiply())
+# try:
+#     print(var_one.divide())
+# except ValueError as e:
+#     print(e)
 
 
+class Employee:
+    def __init__(self, first_name: str, last_name: str, salary: float):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.salary = salary
+
+    @classmethod
+    def from_string(cls, parse):
+        data = parse.split('-')
+        return cls(data[0], data[1], data[2])
+
+
+emp1 = Employee('maRy', 'silveR', 88000.0)
+emp2 = Employee.from_string('ruSl-EmbO-71000.0')
+
+print(emp1.first_name)
+print(emp1.salary)
+print(emp2.first_name)
+print(emp2.salary)
