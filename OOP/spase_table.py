@@ -67,10 +67,29 @@ class Employee:
         return cls(data[0], data[1], data[2])
 
 
-emp1 = Employee('maRy', 'silveR', 88000.0)
-emp2 = Employee.from_string('ruSl-EmbO-71000.0')
+# emp1 = Employee('maRy', 'silveR', 88000.0)
+# emp2 = Employee.from_string('ruSl-EmbO-71000.0')
 
-print(emp1.first_name)
-print(emp1.salary)
-print(emp2.first_name)
-print(emp2.salary)
+# print(emp1.first_name)
+# print(emp1.salary)
+# print(emp2.first_name)
+# print(emp2.salary)
+
+
+class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+
+    @classmethod
+    def parse_book_info(cls, book_info):
+        title, author, year = book_info.split('-')
+        return f'Title: {title}, Author: {author}, Year: {year}'
+
+
+b1 = Book('Crime and Punishment', 'Fedor Dostoevsky', 1866)
+b2 = Book.parse_book_info('Crime and Punishment-Fedor Dostoevsky-1866')
+
+print(b1.author)
+print(b2)
