@@ -1,3 +1,6 @@
+import math
+
+
 class Name:
 
     def __init__(self, rough_first_name: str, rough_last_name: str):
@@ -117,16 +120,31 @@ class Pizza:
         return cls(['ham', 'pineapple'])
 
 
-p1 = Pizza(['bacon', 'parmesan', 'ham'])
-p2 = Pizza.garden_feast()
-
-print(p1.ingredients)
-print(p2.ingredients)
-
-print(p1.order_number)
-print(p2.order_number)
-
-
+# p1 = Pizza(['bacon', 'parmesan', 'ham'])
+# p2 = Pizza.garden_feast()
+#
+# print(p1.ingredients)
+# print(p2.ingredients)
+#
+# print(p1.order_number)
+# print(p2.order_number)
 
 
+class Circle:
 
+    def __init__(self, radius):
+        self.radius = radius
+
+    def get_area(self):
+        return f'Площадь круга: {self.radius**2 * math.pi}'
+
+    def get_perimetr(self):
+        return f'Длина окружности: {self.radius * math.pi * 2}'
+
+
+circle = Circle(10)
+area = circle.get_area()
+perimetr = circle.get_perimetr()
+
+print(area)
+print(perimetr)
