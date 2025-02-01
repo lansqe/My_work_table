@@ -159,38 +159,41 @@ class Beverage:
               'Raspberries': 1.0}
 
     def __init__(self, ingredients):
-        self.ingredients = ingredients
+        if isinstance(ingredients, str):
+            self.ingredients = [ingredients]
+        else:
+            self.ingredients = ingredients
 
     def get_cost(self):
-        final_price = []
-        for name, price in self.prices.items():
-            for i in range(len(self.ingredients)):
-                if name == self.ingredients[i]:
-                    final_price.append(price)
-        return f'Себестоимость напитка составляет: {final_price} '
+        total_price = 0
+        for ingredient in self.ingredients:
+            if ingredient in self.prices:
+                total_price += self.prices[ingredient]
+        return f'Себестоимость напитка составляет: {total_price} '
 
     def get_price(self):
-        final_price = []
-        for name, price in self.prices.items():
-            for i in range(len(self.ingredients)):
-                if name == self.ingredients[i]:
-                    price *= 2.5
-                    final_price.append(price)
-        return f'Стоимость напитка составляет: {final_price}'
+        total_price = 0
+        for ingredient in self.ingredients:
+            if ingredient in self.prices:
+                total_price += self.prices[ingredient] * 2.5
+
+
+        return f'Стоимость напитка составляет: {total_price}'
 
     def get_name(self):
         name_sort = []
-        for name, price in self.prices.items():
-            for i in range(len(self.ingredients)):
-                if name == self.ingredients[i]:
-                    if name.endswith('berries'):
-                        name = name[:-7] + 'berry'
-                    name_sort.append(name)
-                    name_sort = sorted(name_sort)
+        for ingredient in self.ingredients:
+             if ingredient in self.prices:
+                name = ingredient
+                if name.endswith('berries'):
+                    name = name[:-7] + 'berry'
+                name_sort.append(name)
+
+        name_sort = sorted(name_sort)
 
         name_sort.append('Fusion') if len(name_sort) > 1 else name_sort.append('Smoothe')
 
-        return f'Ингредиенты входящие в состав напитка{name_sort}'
+        return f'Ингредиенты входящие в состав напитка: {", ".join(name_sort)}'
 
 
 s1 = Beverage('Banana')
