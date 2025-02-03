@@ -196,14 +196,16 @@ class Beverage:
         return f'Ингредиенты входящие в состав напитка: {", ".join(name_sort)}'
 
 
-s1 = Beverage('Banana')
-print(s1.ingredients)
-print(s1.get_cost())
-print(s1.get_price())
-print(s1.get_name())
+# s1 = Beverage('Banana')
+# print(s1.ingredients)
+# print(s1.get_cost())
+# print(s1.get_price())
+# print(s1.get_name())
+#
+# s2 = Beverage(['Raspberries', 'Strawberries', 'Blueberries'])
+# print(s2.ingredients)
+# print(s2.get_cost())
+# print(s2.get_price())
+# print(s2.get_name())
 
-s2 = Beverage(['Raspberries', 'Strawberries', 'Blueberries'])
-print(s2.ingredients)
-print(s2.get_cost())
-print(s2.get_price())
-print(s2.get_name())
+
