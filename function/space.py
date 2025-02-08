@@ -84,4 +84,36 @@ users = [
 import sys
 arr_1 = []
 arr_2 = arr_1
-print(sys.getrefcount(arr_1))
+# print(sys.getrefcount(arr_1))
+
+list_1 = [1,2,3,4,5,6]
+list_2 = ['mad', 'her', 'ser', 'qwe', 'sqr', 'ale']
+sqrt_num  = list(map(lambda x: x**2, list_1))
+
+# print(sqrt_num)
+
+numbers = zip(list_1, list_2)
+# print(dict(numbers))
+
+
+def solve_hanoi_tower(num):
+    if num <= 0:
+        return 0
+    else:
+        return (2**num) - 1
+
+
+solv = solve_hanoi_tower(5)
+# print(solv)
+
+
+def calc_dice_scores(lst):
+    sum_num = 0
+    for num in lst:
+        if num[0] == num[1]:
+            print('Ничья')
+    return
+
+
+test = calc_dice_scores([(4,4), (2,4), (1,2)])
+print(test)
