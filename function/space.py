@@ -115,5 +115,30 @@ def calc_dice_scores(lst):
     return
 
 
-test = calc_dice_scores([(4,4), (2,4), (1,2)])
-print(test)
+# test = calc_dice_scores([(4,4), (2,4), (1,2)])
+# print(test)
+
+
+from functools import wraps
+
+
+def log_decorator(func):
+    @wraps(func)
+    def wrap(*args, **kwargs):
+        print(f'Calling func "{func}"')
+        func(*args, **kwargs)
+        print(f'Func "{func}" finished its work')
+    return wrap
+
+
+@log_decorator
+def hello():
+    print('Hello, world')
+
+
+hello()
+print()
+help(hello)
+
+
+
