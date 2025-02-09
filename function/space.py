@@ -28,6 +28,7 @@ def multiply(*args):
         result *= num
     return result
 
+
 #
 # product = multiply(2, 3, 4)
 # print(product)
@@ -56,7 +57,7 @@ def compare_dicts(**kwargs):
 def merge_list(*args):
     # x = [int(m) for m in args]
     for index, value in enumerate(args):
-        num = args[index] + args[index-1]
+        num = args[index] + args[index - 1]
         return num
 
 
@@ -82,17 +83,20 @@ users = [
 # Имя: Bob, Возраст: 30, Город: London
 
 import sys
+
 arr_1 = []
 arr_2 = arr_1
 # print(sys.getrefcount(arr_1))
 
-list_1 = [1,2,3,4,5,6]
+list_1 = [1, 2, 3, 4, 5, 6]
 list_2 = ['mad', 'her', 'ser', 'qwe', 'sqr', 'ale']
-sqrt_num  = list(map(lambda x: x**2, list_1))
+sqrt_num = list(map(lambda x: x ** 2, list_1))
 
 # print(sqrt_num)
 
 numbers = zip(list_1, list_2)
+
+
 # print(dict(numbers))
 
 
@@ -100,10 +104,12 @@ def solve_hanoi_tower(num):
     if num <= 0:
         return 0
     else:
-        return (2**num) - 1
+        return (2 ** num) - 1
 
 
 solv = solve_hanoi_tower(5)
+
+
 # print(solv)
 
 
@@ -128,6 +134,7 @@ def log_decorator(func):
         print(f'Calling func "{func}"')
         func(*args, **kwargs)
         print(f'Func "{func}" finished its work')
+
     return wrap
 
 
@@ -136,9 +143,21 @@ def hello():
     print('Hello, world')
 
 
-hello()
-print()
-help(hello)
+# hello()
+# print()
+# help(hello)
+#
+
+def any_duplicated(num: list[list[int]]) -> bool:
+
+    seen = set()
+
+    for sublist in num:
+        for number in sublist:
+            if number in seen:
+                return True
+            seen.add(number)
+    return False
 
 
-
+print(any_duplicated([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))

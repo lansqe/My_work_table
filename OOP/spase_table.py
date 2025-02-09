@@ -136,7 +136,7 @@ class Circle:
         self.radius = radius
 
     def get_area(self):
-        return f'Площадь круга: {self.radius**2 * math.pi}'
+        return f'Площадь круга: {self.radius ** 2 * math.pi}'
 
     def get_perimetr(self):
         return f'Длина окружности: {self.radius * math.pi * 2}'
@@ -177,13 +177,12 @@ class Beverage:
             if ingredient in self.prices:
                 total_price += self.prices[ingredient] * 2.5
 
-
         return f'Стоимость напитка составляет: {total_price}'
 
     def get_name(self):
         name_sort = []
         for ingredient in self.ingredients:
-             if ingredient in self.prices:
+            if ingredient in self.prices:
                 name = ingredient
                 if name.endswith('berries'):
                     name = name[:-7] + 'berry'
@@ -194,18 +193,3 @@ class Beverage:
         name_sort.append('Fusion') if len(name_sort) > 1 else name_sort.append('Smoothe')
 
         return f'Ингредиенты входящие в состав напитка: {", ".join(name_sort)}'
-
-
-# s1 = Beverage('Banana')
-# print(s1.ingredients)
-# print(s1.get_cost())
-# print(s1.get_price())
-# print(s1.get_name())
-#
-# s2 = Beverage(['Raspberries', 'Strawberries', 'Blueberries'])
-# print(s2.ingredients)
-# print(s2.get_cost())
-# print(s2.get_price())
-# print(s2.get_name())
-
-
