@@ -52,6 +52,31 @@ class Triangle(Shape):
         print('Additional actions')
 
 
-t = Triangle(3, 4, 5)
-print(t.perimeter())
-t.drag()
+# t = Triangle(3, 4, 5)
+# print(t.perimeter())
+# t.drag()
+
+
+# HW _1_
+
+
+class Notifire:
+
+    def __init__(self, message: str, recipient: str):
+        self.message = message
+        self.recipient = recipient
+
+    def send(self, message: str, recipient: str):
+        pass
+
+    def validate_recipient(self, recipient: str) -> bool:
+        pass
+
+    def notifire(self, message: str, recipient: str):
+        if self.validate_recipient(message):
+            self.send(message, recipient)
+        else:
+            print('Invalid recipient')
+
+
+
