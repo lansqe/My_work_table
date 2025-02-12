@@ -46,14 +46,15 @@ def count_three_sum(ints):
 
     print(f'ended count_three_sum. Triple counter={counter}')
 
+#
+# if __name__ == '__main__':
+#     print('started main')
+#
+#     create_number_file()
+#     ints = read_ints('numbers.txt')
+#     if ints:
+#         count_three_sum(ints)
+#
+#     print('ended main')
 
-if __name__ == '__main__':
-    print('started main')
-
-    create_number_file()
-    ints = read_ints('numbers.txt')
-    if ints:
-        count_three_sum(ints)
-
-    print('ended main')
-
+#Продолжить - создать пару подклассов 13.02
