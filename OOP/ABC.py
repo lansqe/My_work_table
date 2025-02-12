@@ -78,5 +78,18 @@ class Notifire:
         else:
             print('Invalid recipient')
 
+# Подклассы `EmailNotifier`, `SMSNotifier`, `PushNotifier`:
+# 	•	Создайте классы `EmailNotifier`, `SMSNotifier` и `PushNotifier`, которые наследуются от `Notifier`.
+# 	•	Реализуйте абстрактные методы `send` и `validate_recipient` в каждом подклассе, учитывая особенности отправки уведомлений каждым способом.
+# 	•	`EmailNotifier`:
+# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным email-адресом (используйте регулярные выражения или сторонние библиотеки для валидации).
+# 	•	`send`: Имитирует отправку email (просто печатает сообщение “Sending email to {recipient}: {message}”).
+# 	•	`SMSNotifier`:
+# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным номером телефона (используйте регулярные выражения или сторонние библиотеки для валидации).
+# 	•	`send`: Имитирует отправку SMS (просто печатает сообщение “Sending SMS to {recipient}: {message}”).
+# 	•	`PushNotifier`:
+# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным токеном устройства для push-уведомлений (просто проверяет, что строка не пустая).
+# 	•	`send`: Имитирует отправку push-уведомления (просто печатает сообщение “Sending push notification to {recipient}: {message}”).
 
-
+# •	Создайте экземпляры каждого из `Notifier`’ов.
+# 	•	Попробуйте отправить уведомления с валидными и невалидными получателями, чтобы проверить работу системы.
