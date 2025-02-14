@@ -1,16 +1,18 @@
 
 import random
+import threading
 
-def create_number_file(filename="numbers.txt", num_lines=800, min_value=-999999, max_value=999999):
-    """Создает текстовый файл с заданным количеством случайных целых чисел."""
-    try:
-        with open(filename, 'w') as f:
-            for _ in range(num_lines):
-                number = random.randint(min_value, max_value)
-                f.write(str(number) + '\n')
-        print(f"Файл '{filename}' успешно создан.")
-    except Exception as e:
-        print(f"Ошибка при создании файла: {e}")
+
+# def create_number_file(filename="numbers.txt", num_lines=800, min_value=-999999, max_value=999999):
+#     """Создает текстовый файл с заданным количеством случайных целых чисел."""
+#     try:
+#         with open(filename, 'w') as f:
+#             for _ in range(num_lines):
+#                 number = random.randint(min_value, max_value)
+#                 f.write(str(number) + '\n')
+#         print(f"Файл '{filename}' успешно создан.")
+#     except Exception as e:
+#         print(f"Ошибка при создании файла: {e}")
 
 
 def read_ints(path):
@@ -46,15 +48,20 @@ def count_three_sum(ints):
 
     print(f'ended count_three_sum. Triple counter={counter}')
 
-#
-# if __name__ == '__main__':
-#     print('started main')
-#
-#     create_number_file()
-#     ints = read_ints('numbers.txt')
-#     if ints:
-#         count_three_sum(ints)
-#
-#     print('ended main')
 
-#Продолжить - создать пару подклассов 13.02
+if __name__ == '__main__':
+    print('started main')
+
+    # create_number_file()
+    ints = read_ints('numbers.txt')
+    if ints:
+        count_three_sum(ints)
+
+    t1 = threading.Thread(target=count_three_sum, daemon=True, kwargs=dict(ints=ints))
+    t1.start()
+
+    print(input('write'))
+
+    t1.join()
+    print('ended main')
+
