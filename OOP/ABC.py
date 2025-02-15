@@ -1,6 +1,8 @@
+import re
 from abc import ABC
 from abc import abstractmethod
 import math
+from email_validator import validate_email, EmailNotValidError
 
 
 class Shape(ABC):
@@ -61,35 +63,48 @@ class Triangle(Shape):
 
 
 class Notifire:
+    email = "my+address@example.org"
 
     def __init__(self, message: str, recipient: str):
         self.message = message
         self.recipient = recipient
 
+    @abstractmethod
     def send(self, message: str, recipient: str):
         pass
 
+    @abstractmethod
     def validate_recipient(self, recipient: str) -> bool:
         pass
 
-    def notifire(self, message: str, recipient: str):
-        if self.validate_recipient(message):
-            self.send(message, recipient)
+    def notifire(self):
+        if self.validate_recipient(self.message):
+            self.send(self.message, self.recipient)
         else:
-            print('Invalid recipient')
+            print(f'Invalid recipient: {self.recipient}')
 
-# Подклассы `EmailNotifier`, `SMSNotifier`, `PushNotifier`:
-# 	•	Создайте классы `EmailNotifier`, `SMSNotifier` и `PushNotifier`, которые наследуются от `Notifier`.
-# 	•	Реализуйте абстрактные методы `send` и `validate_recipient` в каждом подклассе, учитывая особенности отправки уведомлений каждым способом.
-# 	•	`EmailNotifier`:
-# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным email-адресом (используйте регулярные выражения или сторонние библиотеки для валидации).
-# 	•	`send`: Имитирует отправку email (просто печатает сообщение “Sending email to {recipient}: {message}”).
-# 	•	`SMSNotifier`:
-# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным номером телефона (используйте регулярные выражения или сторонние библиотеки для валидации).
-# 	•	`send`: Имитирует отправку SMS (просто печатает сообщение “Sending SMS to {recipient}: {message}”).
-# 	•	`PushNotifier`:
-# 	•	`validate_recipient`: Проверяет, является ли `recipient` валидным токеном устройства для push-уведомлений (просто проверяет, что строка не пустая).
-# 	•	`send`: Имитирует отправку push-уведомления (просто печатает сообщение “Sending push notification to {recipient}: {message}”).
 
-# •	Создайте экземпляры каждого из `Notifier`’ов.
-# 	•	Попробуйте отправить уведомления с валидными и невалидными получателями, чтобы проверить работу системы.
+class EmailNotifier(Notifire):
+    def validate_recipient(self, recipient: str) -> bool:
+        email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+        return re.match(email_regex, recipient) is not None
+
+    def send(self, message: str, recipient: str):
+        return f'Sending email to {recipient}: {message}'
+
+
+class SMSNotifier(Notifire):
+    def validate_recipient(self, recipient: str) -> bool:
+        phone_regex = r'^\+?[1-9]\d{1,14}$'
+        return re.match(phone_regex, recipient) is not None
+
+    def send(self, message: str, recipient: str):
+        print(f"Sending SMS to {recipient}: {message}")
+
+
+class PushNotifier(Notifire):
+    def validate_recipient(self, recipient: str) -> bool:
+        return bool(recipient.strip())
+
+    def send(self, message: str, recipient: str):
+        print(f"Sending push notification to {recipient}: {message}")
