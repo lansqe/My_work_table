@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from models import User, Feedback
+from models import User, Feedback, UserCreate
 
 app = FastAPI()
 data_feedback = []
+
 
 @app.get('/')
 async def root():
@@ -35,4 +36,15 @@ async def users_feedback(f: Feedback):
 @app.get('/comments')
 async def show_feedback():
     return data_feedback
+
+
+@app.post('/create_user')
+async def user_create(c: UserCreate):
+    return {
+        'name': c.name,
+        'email': c.email,
+        'age': c.age,
+        'is_subscribed': True
+    }
+
 
