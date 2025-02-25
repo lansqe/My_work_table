@@ -18,3 +18,7 @@ class UserCreate(BaseModel):
     is_subscribed: bool
 
 
+class UserLogin(BaseModel):
+    login: str
+    password: str | int
+
