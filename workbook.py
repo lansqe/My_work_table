@@ -5,6 +5,8 @@
 # result = round(procent_izmeneniya, 2)
 # if result == 42.55:
 #     print('Задача решена верно!')
+from functools import wraps
+
 
 # string1 = '\'Манчестер Юнайтед\' - чемпион Англии!\n2013'
 # print(string1)
@@ -211,3 +213,54 @@
 #         print(index, name['клиент'])
 
 
+# Создай лист из 100 чисел от 0 до 99. Преврати его словарь, где ключи – это числа из листа,
+# а значения – эти же числа, умноженные на 2.
+
+
+#
+# d1 = list(range(100))
+#
+# print(d1)
+#
+# d2 = {num: num * 2 for num in d1}
+#
+# print(d2)
+
+
+class Thing:
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return Thing(f'{self.value} and {other.value}')
+
+    def __eq__(self, other):
+        if isinstance(other, Thing):
+            return self.value == other.value
+        else:
+            return False
+
+    def  __str__(self):
+        return self.value
+
+
+d1 = Thing('dog')
+d2 = Thing('cat')
+result = d1 + d2
+print(d1 + d2)
+print(result == Thing('dog and cat'))
+
+
+def double_result(func):
+    def wrapper(*args, **kwargs):
+        value = func(*args, **kwargs)
+        return value * 2
+    return wrapper
+
+
+@double_result
+def double(num):
+    return num
+
+
+print(double(5))
